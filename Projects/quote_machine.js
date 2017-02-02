@@ -1,6 +1,6 @@
 var quotes = [
   {
-    quote: "I'm Rocketman",
+    quote: "I'm a Rocketman",
     author: "Elton John",
   },
   {
@@ -8,7 +8,7 @@ var quotes = [
     author: "Nelson Mandela",
   },
   {
-    quote: 'Whether you believe you can or you cannot, you are right.',
+    quote: 'Whether you think you can or ou think you can\'t, -- you\'re right.',
     author: 'Henry Ford'
   },
   {
@@ -18,10 +18,18 @@ var quotes = [
   {
     quote: 'You better check yo self, before you rickity wreck yo self!',
     author: 'Ice Cube',
+  },
+  {
+    quote: 'The journey is the reward',
+    author: 'Steve Jobs'
   }
 ]
 
+//This generates the randomness
+var randomAuthor, randomQuote, currentQuote;
+
 function random(){
+
   let min = 0;
   let max = quotes.length;
 
@@ -31,13 +39,25 @@ function random(){
     return Math.floor(Math.random() * (max - min)) + min;
   }(min, max));
 
-  return `"${quotes[randomNum].quote}"\n - ${quotes[randomNum].author}`
+  randomAuthor = quotes[randomNum].author;
+  randomQuote = quotes[randomNum].quote;
+
+  return currentQuote = `"${quotes[randomNum].quote}"\n - ${quotes[randomNum].author}`;
+
 }
 console.log(random());
 
+console.log(randomAuthor);
+console.log("This is " + currentQuote);
+
+//generates quote to screen upon onclick
 function myFunction() {
    document.getElementById("quotescreen").innerHTML = random();
 }
 
-//console.log(getRandomInt(0, 4));
-//console.log(Math.floor(Math.random() + 5));
+
+$(document).ready(function() {
+			$("#tweetit").click(function() {
+window.open("https://twitter.com/intent/tweet?&text=" + encodeURIComponent(currentQuote));
+	 });
+});
